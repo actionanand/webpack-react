@@ -6,7 +6,7 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   // entry: './src/index.js',
   entry: {
     index: path.resolve(__dirname, './src/index.js') 
@@ -21,7 +21,7 @@ module.exports = {
       'all'
     ],
   },
-  devtool: 'eval-cheap-module-source-map',
+  devtool: false,
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/public/index.html'),
@@ -35,14 +35,14 @@ module.exports = {
     rules: [
       {
         test: /\.(js)x?$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
         }
       },
       {
         test: /\.css$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: [
           { loader: 'style-loader' },
           { 

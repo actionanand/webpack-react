@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve --mode=development",
-    "build": "webpack --mode=production",
+    "build": "webpack --mode=production --config webpack.config.prod.js",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist"
   },
