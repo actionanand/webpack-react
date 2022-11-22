@@ -1,8 +1,10 @@
-import React, { Component, Suspense } from 'react';
-import { Link, Route, Routes, } from 'react-router-dom';
+import React, { Component, Suspense, lazy } from 'react';
+import { Link, Route, Routes, Navigate } from 'react-router-dom';
 
-import Pizza from './containers/Pizza/';
+
 import Users from './containers/Users';
+
+const Pizza = lazy(() => import('./containers/Pizza'));
 
 const LazyPizza = () => (
   <div>
@@ -23,13 +25,11 @@ class App extends Component {
           <Link to='/pizza'> Pizza </Link>
         </div>
         <div>
-          <Layout>
-            <Routes>
-              <Route path='/' element={<Users />} />
-              <Route  path='/pizza' element={<LazyPizza />} />
-              <Route path='*' element={shouldRedirect ? <Navigate replace to='/' /> : null } />
-            </Routes>
-          </Layout>
+          <Routes>
+            <Route path='/' element={<Users />} />
+            <Route  path='/pizza' element={<LazyPizza />} />
+            <Route path='*' element={shouldRedirect ? <Navigate replace to='/' /> : null } />
+          </Routes>
         </div>
       </div>
     );

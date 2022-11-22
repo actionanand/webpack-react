@@ -7,7 +7,7 @@ import App from './App';
 
 
 const app = (
-  <BrowserRouter basename='webpack-react'>
+  <BrowserRouter>
     <App />
   </BrowserRouter>
 );

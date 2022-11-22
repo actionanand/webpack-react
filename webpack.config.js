@@ -34,34 +34,50 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader',
+        test: /\.?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.css$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         use: [
           { loader: 'style-loader' },
           { 
-            loader: 'css-loader', options: {
+            loader: 'css-loader', 
+            options: {
               importLoaders: 1,
               modules: {
-                loacalIdentName: '[name]__[local]__[hash:base64:5]'
+                localIdentName: '[name]__[local]__[hash:base64:5]'
               }
             } 
           },
           {
-            loader: 'postcss-loader', options: {
-              ident: 'postcss', 
-              plugins: () => [autoprefixer()]
-            }
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    autoprefixer()
+                  ],
+                ],
+              },
+            },
           }
         ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
-        loader: 'url-loader?limit=8000&name=images/[name].[ext]'
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            }
+          }
+        ]
       }
     ]
   }
