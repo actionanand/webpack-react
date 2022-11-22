@@ -1,0 +1,18 @@
+.NavBar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 2rem;
+  padding: 1rem;
+  background: linear-gradient(rgb(13, 111, 13), rgb(143, 143, 12));
+}
+
+.NavLink {
+  color: white;
+  text-decoration: none;
+}
+
+.NavLink:hover {
+  color: blueviolet;
+  text-shadow: 2px 2px 8px white;
+}

@@ -5,9 +5,14 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
+let baseName = 'webpack-react';
+
+if (process.env.NODE_ENV === 'development'){
+  baseName = '';
+}
 
 const app = (
-  <BrowserRouter basename='webpack-react'>
+  <BrowserRouter basename={baseName} >
     <App />
   </BrowserRouter>
 );
