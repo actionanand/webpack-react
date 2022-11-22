@@ -16,11 +16,20 @@ const LazyPizza = () => (
 );
 
 class App extends Component {
+  componentDidMount() {
+    document.addEventListener('contextmenu:img', (e) => {
+      e.preventDefault();
+    });
+  };
+
   render () {
     const shouldRedirect = true;
 
     return (
-      <div>
+      <div onCopy={e => {
+        e.clipboardData.setData('text/plain', 'Copying is not allowed!');
+        e.preventDefault();
+      } }>
         <NavBar />
         <div>
           <Routes>
