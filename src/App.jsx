@@ -1,8 +1,9 @@
 import React, { Component, Suspense, lazy } from 'react';
-import { Link, Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 
 import Users from './containers/Users';
+import NavBar from './components/NavBar/NavBar';
 
 const Pizza = lazy(() => import('./containers/Pizza'));
 
@@ -20,14 +21,11 @@ class App extends Component {
 
     return (
       <div>
-        <div>
-          <Link to='/'> Users </Link>
-          <Link to='/pizza'> Pizza </Link>
-        </div>
+        <NavBar />
         <div>
           <Routes>
             <Route path='/' element={<Users />} />
-            <Route  path='/pizza' element={<LazyPizza />} />
+            <Route  path='pizza' element={<LazyPizza />} />
             <Route path='*' element={shouldRedirect ? <Navigate replace to='/' /> : null } />
           </Routes>
         </div>
