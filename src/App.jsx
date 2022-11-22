@@ -17,7 +17,7 @@ const LazyPizza = () => (
 
 class App extends Component {
   componentDidMount() {
-    document.addEventListener('contextmenu:img', (e) => {
+    document.addEventListener('contextmenu', (e) => {
       e.preventDefault();
     });
   };
